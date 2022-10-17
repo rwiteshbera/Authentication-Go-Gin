@@ -16,12 +16,12 @@ func DBInstance() *mongo.Client {
 	err := godotenv.Load(".env")
 
 	if err != nil {
-		log.Fatal("Error while loading .env file")
+		log.Fatal(err)
 	}
 
-	MongoDB := os.Getenv("MONGO_URI")
+	URI := os.Getenv("MONGODB_URI")
 
-	client, err := mongo.NewClient(options.Client().ApplyURI(MongoDB))
+	client, err := mongo.NewClient(options.Client().ApplyURI(URI))
 
 	if err != nil {
 		log.Fatal(err)

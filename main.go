@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"net/http"
 	"os"
 
@@ -11,19 +11,22 @@ import (
 )
 
 func main() {
-	err := godotenv.Load(".env")
+	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error while loading .env file")
+		fmt.Println(err)
 	}
 
 	PORT := os.Getenv("PORT")
+
 	if PORT == "" {
 		PORT = "8000"
 	}
 
+	gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
 
 	routes.AuthRoutes(router)
+	routes.UserRoutes(router)
 
 	router.GET("/api", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"success": "Access granted"})
