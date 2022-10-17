@@ -36,7 +36,7 @@ air
 }
 ```
 - Get specific user data by ID (Provide the `token` in request header)
-- **GET** : `http://localhost:5050/users/<USER_ID>`
+**GET** : `http://localhost:5050/users/<USER_ID>`
 
 - Get all users' data (Provide the `token` in request header)
-- **GET** : `http://localhost:5050/users`
+**GET** : `http://localhost:5050/users`
