@@ -1,5 +1,5 @@
 Installation
-- Create a `.env` file and add the secret key. 
+- Create a `.env` file and add the secret keys. 
 ```bash
 PORT = 
 MONGODB_URI = 
