@@ -1,4 +1,4 @@
-Installation
+### Installation
 - Create a `.env` file and add the secret keys. 
 ```bash
 PORT = 
@@ -17,7 +17,7 @@ go mod tidy
 air
 ```
 
-#### Workflow
+### Workflow
 - **POST** : `http://localhost:5050/user/signup`
 ```json
 {
