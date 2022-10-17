@@ -118,6 +118,6 @@ func Login() gin.HandlerFunc {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": userError.Error()})
 		}
 		defer cancel()
-		c.JSON(http.StatusOK, gin.H{"token": token})
+		c.JSON(http.StatusOK, gin.H{"token": token, "user_id": savedUser.UserId})
 	}
 }

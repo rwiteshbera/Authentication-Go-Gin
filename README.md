@@ -16,3 +16,27 @@ go mod tidy
 ```bash
 air
 ```
+
+#### Workflow
+- **POST** : `http://localhost:5050/user/signup`
+```json
+{
+    "first_name" : "",
+    "last_name" : "",
+    "email" : "",
+    "password":""
+}
+```
+
+- **POST** : `http://localhost:5050/user/login`
+```json
+{
+    "email":"",
+    "password":""
+}
+```
+- Get specific user data by ID (Provide the `token` in request header)
+- **GET** : `http://localhost:5050/users/<USER_ID>`
+
+- Get all users' data (Provide the `token` in request header)
+- **GET** : `http://localhost:5050/users`
