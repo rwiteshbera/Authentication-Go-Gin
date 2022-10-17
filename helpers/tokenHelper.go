@@ -33,7 +33,7 @@ func GenerateToken(email string, firstname string, lastname string, uid string) 
 		LastName:  lastname,
 		UserId:    uid,
 		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour * 24)),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour * 168)), // Token will be expired after 168 H
 		},
 	}
 
@@ -66,7 +66,6 @@ func ValidateToken(signedToken string) (claims *SignedDetails, msg string) {
 
 	if err != nil {
 		msg = err.Error()
-		return
 	}
 
 	claims, ok := token.Claims.(*SignedDetails)

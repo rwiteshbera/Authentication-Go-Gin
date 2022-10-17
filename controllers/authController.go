@@ -11,6 +11,7 @@ import (
 	"github.com/rwiteshbera/authentication-go-gin/helpers"
 	"github.com/rwiteshbera/authentication-go-gin/models"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -68,6 +69,7 @@ func Signup() gin.HandlerFunc {
 		password := HashPassword(user.Password)
 		user.Password = password
 
+		user.UserId = primitive.NewObjectID().Hex()
 		user.CreatedAt, _ = time.Parse(time.RFC1123, time.Now().Format(time.RFC1123))
 
 		result, insertErr := userCollection.InsertOne(ctx, user) // Insert data in db
@@ -116,6 +118,6 @@ func Login() gin.HandlerFunc {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": userError.Error()})
 		}
 		defer cancel()
-		c.JSON(http.StatusOK, token)
+		c.JSON(http.StatusOK, gin.H{"token": token})
 	}
 }
